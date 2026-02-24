@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヨルノフクブクロ (Yoru no Fukubukuro)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- App Switcher -->
+    <div class="view-switcher">
+        <button id="btn-consumer" class="active">顧客用アプリ (Mobile)</button>
+        <button id="btn-owner">オーナーダッシュボード (PC)</button>
+    </div>
+
+    <!-- Consumer iOS/Android App Mockup -->
+    <div id="consumer-view" class="view-container active">
+        <div class="mobile-frame">
+            
+            <!-- App Header -->
+            <header class="app-header">
+                <div class="logo">
+                    <span class="logo-icon">🌙</span>
+                    <h1>Yoru no Fukubukuro</h1>
+                </div>
+                <div class="user-profile">
+                    <span class="user-rank">GOLD MEMBER</span>
+                </div>
+            </header>
+
+            <!-- Main Scrollable Area -->
+            <main class="app-main">
+                <!-- Ticket Section -->
+                <section class="ticket-section">
+                    <h2>あなたのレスキューチケット</h2>
+                    <div class="ticket-display">
+                        <div class="ticket-count">
+                            <span class="count-number" id="ticket-balance">3</span>
+                            <span class="count-unit">枚</span>
+                        </div>
+                        <p class="ticket-info">昼間のお買い物500円ごとに1枚獲得！</p>
+                    </div>
+                </section>
+
+                <!-- Guerrilla Offer Section (Hidden by default) -->
+                <section id="guerrilla-offer" class="offer-section hidden">
+                    <div class="offer-card pulse">
+                        <div class="offer-badge">3個限定！</div>
+                        <h3>シークレット・レスキューバッグが出現しました！</h3>
+                        <p class="offer-desc">お店の美味しいお惣菜が詰まった、中身が見えないお楽しみ袋です。今すぐ確保して、フードロス削減に貢献しましょう！</p>
+                        <div class="offer-price">
+                            <span class="price-value">¥500</span>
+                            <span class="price-tax">(税込)</span>
+                        </div>
+                        <button id="btn-buy" class="buy-button">チケット1枚を消費して購入する</button>
+                    </div>
+                </section>
+
+                <!-- Status / Empty State Section -->
+                <section id="wait-state" class="wait-section">
+                    <div class="radar-container">
+                        <div class="radar"></div>
+                        <p>現在、オファーを待機しています...</p>
+                        <button id="dev-trigger-offer" class="dev-button">（Demo: オファーを発生させる）</button>
+                    </div>
+                </section>
+                
+            </main>
+
+            <!-- Success Overlay (Hidden) -->
+            <div id="success-overlay" class="overlay hidden">
+                <div class="overlay-content">
+                    <div class="success-icon">🎉</div>
+                    <h2>確保完了！</h2>
+                    <p>本日20時までに店舗でお受け取りください。<br>何が入っているかはお楽しみに！</p>
+                    <button id="btn-close-overlay" class="secondary-button">閉じる</button>
+                </div>
+            </div>
+
+            <!-- App Footer Navigation -->
+            <nav class="app-nav">
+                <a href="#" class="nav-item active">🏠 ホーム</a>
+                <a href="#" class="nav-item">🎟️ チケット</a>
+                <a href="#" class="nav-item">👤 マイページ</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Owner Dashboard Mockup -->
+    <div id="owner-view" class="view-container">
+        <div class="dashboard-layout">
+            
+            <header class="dash-header">
+                <h2>オーナーダッシュボード - ヨルノフクブクロ</h2>
+                <div class="dash-status">ただいまのレスキューバッグ出品： <span class="status-active">出品中 (残り2個)</span></div>
+            </header>
+
+            <div class="dash-grid">
+                <!-- Main KPI Card -->
+                <div class="dash-card primary-kpi">
+                    <h3>今月の回避できた廃棄額（純増売上）</h3>
+                    <div class="kpi-value text-green">+ ¥158,500</div>
+                    <p class="kpi-subtext">前月比 +12% ↗</p>
+                </div>
+
+                <!-- Secondary KPIs -->
+                <div class="dash-card">
+                    <h3>レスキュー成功率</h3>
+                    <div class="kpi-value">94.2%</div>
+                </div>
+                <div class="dash-card">
+                    <h3>ついで買い誘発売上</h3>
+                    <div class="kpi-value text-blue">+ ¥34,200</div>
+                    <p class="kpi-subtext">受取時の追加購入</p>
+                </div>
+
+                <!-- Chart 1: Demographics -->
+                <div class="dash-card chart-card">
+                    <h3>利用者属性（カニバリ防止の証明）</h3>
+                    <p class="chart-desc">レスキュー品のみを買う客ではなく、通常時にたくさん買ってくれる優良顧客への還元として機能しています。</p>
+                    <canvas id="userAttrChart"></canvas>
+                </div>
+
+                <!-- Chart 2: Time Series -->
+                <div class="dash-card chart-card">
+                    <h3>日別・回収売上推移</h3>
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
