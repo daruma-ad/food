@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,11 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff4d4f">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
 </head>
+
 <body>
     <!-- App Switcher -->
     <div class="view-switcher">
@@ -18,7 +23,7 @@
     <!-- Consumer iOS/Android App Mockup -->
     <div id="consumer-view" class="view-container active">
         <div class="mobile-frame">
-            
+
             <!-- App Header -->
             <header class="app-header">
                 <div class="logo">
@@ -66,7 +71,7 @@
                         <button id="dev-trigger-offer" class="dev-button">（Demo: オファーを発生させる）</button>
                     </div>
                 </section>
-                
+
             </main>
 
             <!-- Success Overlay (Hidden) -->
@@ -91,7 +96,7 @@
     <!-- Owner Dashboard Mockup -->
     <div id="owner-view" class="view-container">
         <div class="dashboard-layout">
-            
+
             <header class="dash-header">
                 <h2>オーナーダッシュボード - ヨルノフクブクロ</h2>
                 <div class="dash-status">ただいまのレスキューバッグ出品： <span class="status-active">出品中 (残り2個)</span></div>
@@ -135,4 +140,5 @@
 
     <script src="app.js"></script>
 </body>
+
 </html>
